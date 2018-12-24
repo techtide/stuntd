@@ -1,0 +1,446 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Zombie.tscn" type="PackedScene" id=2]
+[ext_resource path="res://WaveManager.gd" type="Script" id=3]
+[ext_resource path="res://Ammo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ShopContainer.gd" type="Script" id=5]
+[ext_resource path="res://RobotoMono.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://WaveBox.gd" type="Script" id=7]
+[ext_resource path="res://HealthBox.gd" type="Script" id=8]
+[ext_resource path="res://TimeBox.gd" type="Script" id=9]
+[ext_resource path="res://AmmoBox.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="Theme" id=4]
+
+default_font = SubResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="Theme" id=2]
+
+default_font = SubResource( 1 )
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 76.582, 235.908 )
+
+[node name="Zombie" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 325.254, 140.08 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Zombie4" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 819.253, 95.0801 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Zombie5" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 205.254, 447.079 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Zombie2" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 50, 89 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Zombie3" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 480.32, 453.31 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="WaveManager" type="Node" parent="." index="6"]
+
+editor/display_folded = true
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="WaveManager" index="0"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
+[node name="Ammo" parent="." index="7" instance=ExtResource( 4 )]
+
+position = Vector2( 734.074, 323.895 )
+
+[node name="Ammo2" parent="." index="8" instance=ExtResource( 4 )]
+
+position = Vector2( 971.566, 72.2219 )
+z_index = -1
+_sections_unfolded = [ "Z Index" ]
+
+[node name="ShopContainer" type="Container" parent="." index="9"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 105.0
+margin_top = 65.0
+margin_right = 921.0
+margin_bottom = 529.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="ShopContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_right = 815.0
+margin_bottom = 465.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.400391, 0.625, 0.414429, 0.204431 )
+
+[node name="TaserTurretButton" type="Button" parent="ShopContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 122.0
+margin_right = 802.0
+margin_bottom = 165.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Taser Turret - $10"
+flat = false
+align = 1
+
+[node name="GunTurretButton" type="Button" parent="ShopContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 183.0
+margin_right = 802.0
+margin_bottom = 226.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Gun Turret - $10"
+flat = false
+align = 1
+
+[node name="Label" type="Label" parent="ShopContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 33.0
+margin_right = 815.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 4 )
+text = "SHOP"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="Canvas" type="CanvasLayer" parent="." index="10"]
+
+editor/display_folded = true
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="WaveBox" type="Container" parent="Canvas" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 805.0
+margin_top = 534.0
+margin_right = 1022.0
+margin_bottom = 597.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Canvas/WaveBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -65.0
+margin_top = -4.0
+margin_right = 218.0
+margin_bottom = 63.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "WAVE 1"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="HealthBox" type="Container" parent="Canvas" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 550.0
+margin_right = 170.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Canvas/HealthBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = -19.0
+margin_right = 200.0
+margin_bottom = 48.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "HP 100"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="TimeBox" type="Container" parent="Canvas" index="2"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 200.0
+margin_top = 530.0
+margin_right = 756.0
+margin_bottom = 536.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="Canvas/TimeBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 10.0
+margin_right = 630.0
+margin_bottom = 67.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "0:5"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="AmmoBox" type="Container" parent="Canvas" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 195.0
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Canvas/AmmoBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_right = 315.0
+margin_bottom = 67.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "AMMO 6"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="MoneyBox" type="Container" parent="Canvas" index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 829.0
+margin_top = -2.0
+margin_right = 1024.0
+margin_bottom = 59.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="Canvas/MoneyBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -120.0
+margin_top = 4.0
+margin_right = 192.0
+margin_bottom = 71.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "$50"
+align = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="Turrets" type="Node2D" parent="." index="11"]
+
+[node name="Navigation2D" type="Navigation2D" parent="." index="12"]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
+
+navpoly = null
+enabled = true
+
+[connection signal="ammo_changed" from="Player" to="Canvas/AmmoBox" method="_on_Player_ammo_changed"]
+
+[connection signal="health_changed" from="Player" to="Canvas/HealthBox" method="_on_Player_health_changed"]
+
+[connection signal="player_killed" from="Player" to="ShopContainer" method="_on_Player_player_killed"]
+
+[connection signal="wave_changed" from="WaveManager" to="Canvas/WaveBox" method="_on_WaveManager_wave_changed"]
+
+[connection signal="edit_mode" from="ShopContainer" to="WaveManager" method="_on_ShopContainer_edit_mode"]
+
+[connection signal="edit_mode" from="ShopContainer" to="Player" method="_on_ShopContainer_edit_mode"]
+
+[connection signal="edit_mode_off" from="ShopContainer" to="WaveManager" method="_on_ShopContainer_edit_mode_off"]
+
+[connection signal="edit_mode_off" from="ShopContainer" to="Player" method="_on_ShopContainer_edit_mode_off"]
+
+[connection signal="pressed" from="ShopContainer/TaserTurretButton" to="ShopContainer" method="purchase" binds= [ "TASER_TURRET" ]]
+
+[connection signal="pressed" from="ShopContainer/GunTurretButton" to="ShopContainer" method="purchase" binds= [ "GUN_TURRET" ]]
+
+

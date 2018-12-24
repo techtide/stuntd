@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://StunTurret.gd" type="Script" id=1]
+[ext_resource path="res://turret.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 55.9118
+
+[node name="StunTurret" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( -0.0427933, 0.198364 )
+scale = Vector2( 0.462045, 0.462045 )
+texture = ExtResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite" index="0"]
+
+position = Vector2( 108.307, -0.429318 )
+scale = Vector2( 2.16429, 2.16429 )
+enabled = true
+exclude_parent = true
+cast_to = Vector2( 1000, 0 )
+collision_mask = 1
+
+[node name="LineEmitter" type="Node" parent="Sprite" index="1"]
+
+[node name="Line2D" type="Line2D" parent="Sprite/LineEmitter" index="0"]
+
+position = Vector2( 3.72529e-009, -1.49012e-008 )
+points = PoolVector2Array( 0, 0 )
+width = 5.0
+default_color = Color( 0.96875, 1, 0, 1 )
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Transform" ]
+
+[node name="LineHolder" type="Position2D" parent="Sprite" index="2"]
+
+position = Vector2( 151.593, -0.429318 )
+scale = Vector2( 2.16429, 2.16429 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+visible = false
+position = Vector2( -9.24268, -1.52588e-005 )
+shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." index="2"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+[node name="Timer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 10.0
+one_shot = false
+autostart = true
+
+
