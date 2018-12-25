@@ -18,6 +18,8 @@ signal health_changed(health)
 signal ammo_changed(ammo)
 signal player_killed()
 
+var shield = false
+
 func _ready():
 	yield(get_tree(), "idle_frame")
 	get_tree().call_group("zombies", "set_player", self)
@@ -64,8 +66,8 @@ func _physics_process(delta):
 		pass
 
 func damage_health(amount):
-	if edit_mode:
-		pass
+	if edit_mode or shield:
+		return
 	else:
 		health -= amount
 		emit_signal("health_changed", health)
@@ -79,6 +81,8 @@ func increment_ammo():
 func kill():
 	get_tree().reload_current_scene()
 
+###################### Editing ######################
+
 func _on_ShopContainer_edit_mode():
 	print("[+] Edit mode turned on!")
 	edit_mode = true
@@ -86,3 +90,18 @@ func _on_ShopContainer_edit_mode():
 func _on_ShopContainer_edit_mode_off():
 	print("[+] Edit mode turned off!")
 	edit_mode = false
+
+###################### Powerups ######################
+
+func shield_on():
+	print("shield")
+	shield = true
+
+func shield_off():
+	shield = false
+
+func reset_health():
+	health = 100
+
+func add_three_ammo():
+	ammo += 3

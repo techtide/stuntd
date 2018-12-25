@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Zombie.tscn" type="PackedScene" id=2]
@@ -10,18 +10,7 @@
 [ext_resource path="res://HealthBox.gd" type="Script" id=8]
 [ext_resource path="res://TimeBox.gd" type="Script" id=9]
 [ext_resource path="res://AmmoBox.gd" type="Script" id=10]
-
-[sub_resource type="DynamicFont" id=3]
-
-size = 50
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 6 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
-
-[sub_resource type="Theme" id=4]
-
-default_font = SubResource( 3 )
+[ext_resource path="res://Wave1.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -35,7 +24,19 @@ _sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 default_font = SubResource( 1 )
 
-[node name="World" type="Node2D"]
+[sub_resource type="DynamicFont" id=3]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="Theme" id=4]
+
+default_font = SubResource( 3 )
+
+[node name="World" type="Node2D" index="0"]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -58,7 +59,7 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="Zombie2" parent="." index="4" instance=ExtResource( 2 )]
 
-position = Vector2( 50, 89 )
+position = Vector2( 60, 110 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Zombie3" parent="." index="5" instance=ExtResource( 2 )]
@@ -80,17 +81,28 @@ autostart = false
 
 [node name="Ammo" parent="." index="7" instance=ExtResource( 4 )]
 
-position = Vector2( 734.074, 323.895 )
+position = Vector2( 663.75, 179.547 )
 
-[node name="Ammo2" parent="." index="8" instance=ExtResource( 4 )]
+[node name="Ammo3" parent="." index="8" instance=ExtResource( 4 )]
+
+position = Vector2( 61.9971, 447.097 )
+
+[node name="Ammo5" parent="." index="9" instance=ExtResource( 4 )]
+
+position = Vector2( 893.631, 504.505 )
+
+[node name="Ammo6" parent="." index="10" instance=ExtResource( 4 )]
+
+position = Vector2( 403.152, 345.839 )
+
+[node name="Ammo2" parent="." index="11" instance=ExtResource( 4 )]
 
 position = Vector2( 971.566, 72.2219 )
 z_index = -1
 _sections_unfolded = [ "Z Index" ]
 
-[node name="ShopContainer" type="Container" parent="." index="9"]
+[node name="ShopContainer" type="Container" parent="." index="12"]
 
-editor/display_folded = true
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
@@ -146,7 +158,7 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Taser Turret - $10"
+text = "Taser Turret - $450"
 flat = false
 align = 1
 
@@ -171,11 +183,86 @@ toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
 group = null
-text = "Gun Turret - $10"
+text = "Gun Turret - $1000"
 flat = false
 align = 1
 
-[node name="Label" type="Label" parent="ShopContainer" index="3"]
+[node name="ShieldButton" type="Button" parent="ShopContainer" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 14.0
+margin_top = 242.0
+margin_right = 803.0
+margin_bottom = 285.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Shield - $300"
+flat = false
+align = 1
+
+[node name="100HPButton" type="Button" parent="ShopContainer" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 13.0
+margin_top = 301.0
+margin_right = 802.0
+margin_bottom = 344.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "100 HP - $150"
+flat = false
+align = 1
+
+[node name="AmmoButton" type="Button" parent="ShopContainer" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 14.0
+margin_top = 356.0
+margin_right = 803.0
+margin_bottom = 399.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Three Rounds of Ammo - $70"
+flat = false
+align = 1
+
+[node name="Label" type="Label" parent="ShopContainer" index="6"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -191,7 +278,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 4 )
+theme = SubResource( 2 )
 text = "SHOP"
 align = 1
 percent_visible = 1.0
@@ -199,7 +286,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme" ]
 
-[node name="Canvas" type="CanvasLayer" parent="." index="10"]
+[node name="Canvas" type="CanvasLayer" parent="." index="13"]
 
 editor/display_folded = true
 layer = 1
@@ -243,7 +330,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+theme = SubResource( 4 )
 text = "WAVE 1"
 align = 2
 percent_visible = 1.0
@@ -285,7 +372,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+theme = SubResource( 4 )
 text = "HP 100"
 percent_visible = 1.0
 lines_skipped = 0
@@ -326,7 +413,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+theme = SubResource( 4 )
 text = "0:5"
 align = 1
 percent_visible = 1.0
@@ -365,7 +452,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+theme = SubResource( 4 )
 text = "AMMO 6"
 percent_visible = 1.0
 lines_skipped = 0
@@ -406,7 +493,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-theme = SubResource( 2 )
+theme = SubResource( 4 )
 text = "$50"
 align = 2
 percent_visible = 1.0
@@ -414,14 +501,14 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Theme" ]
 
-[node name="Turrets" type="Node2D" parent="." index="11"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="14"]
 
-[node name="Navigation2D" type="Navigation2D" parent="." index="12"]
-
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D" index="0"]
-
-navpoly = null
-enabled = true
+stream = ExtResource( 11 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
 
 [connection signal="ammo_changed" from="Player" to="Canvas/AmmoBox" method="_on_Player_ammo_changed"]
 
@@ -442,5 +529,11 @@ enabled = true
 [connection signal="pressed" from="ShopContainer/TaserTurretButton" to="ShopContainer" method="purchase" binds= [ "TASER_TURRET" ]]
 
 [connection signal="pressed" from="ShopContainer/GunTurretButton" to="ShopContainer" method="purchase" binds= [ "GUN_TURRET" ]]
+
+[connection signal="pressed" from="ShopContainer/ShieldButton" to="ShopContainer" method="purchase" binds= [ "SHIELD" ]]
+
+[connection signal="pressed" from="ShopContainer/100HPButton" to="ShopContainer" method="purchase" binds= [ "HUNDREDHP" ]]
+
+[connection signal="pressed" from="ShopContainer/AmmoButton" to="ShopContainer" method="purchase" binds= [ "THREEAMMO" ]]
 
 
